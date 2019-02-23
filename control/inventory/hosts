@@ -1,0 +1,11 @@
+[loadbalancer]
+load1
+
+[webserver]
+app01
+
+[database]
+db01
+
+[control]
+ansible

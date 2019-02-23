@@ -1,0 +1,1 @@
+docker exec -it app01 bash -c "echo 'PS1='\''webserver# '\' >> /root/.bashrc; bash";

@@ -1,0 +1,1 @@
+docker exec -it db_01 bash -c "echo 'PS1='\''mysql# '\' >> /root/.bashrc; bash";

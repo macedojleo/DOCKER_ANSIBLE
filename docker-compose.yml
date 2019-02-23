@@ -1,0 +1,26 @@
+version: '3.0'
+services:
+        load01:
+                build: loadbalancer
+                hostname: load01
+                container_name: load01
+        app01:
+                build: webserver
+                hostname: app01
+                container_name: app01
+        db01:
+                build: db
+                hostname: mysql01
+                container_name: mysql01
+                environment:
+                                MYSQL_ROOT_PASSWORD: 123456
+                                MYSQL_DATABASE: auth
+                                MYSQL_USER: admin
+                                MYSQL_PASSWORD: admin
+        ansible:
+                build: control
+                hostname: ansible
+                container_name: ansible
+                volumes:
+                        - ./control/inventory:/etc/ansible
+
