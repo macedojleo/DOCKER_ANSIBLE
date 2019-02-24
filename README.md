@@ -23,3 +23,22 @@ docker ps
 #CONFIG ANSIBLE (control host):
 
 touch /etc/ansible/ansible.cfg
+
+============================
+NETWORK:
+
+#Install SSH server for each host:
+
+apt-get update; apt-get install -y openssh-server;service ssh start
+
+#Generate SSH key for each host:
+
+ssh-keygen -t rsa
+
+#Copy public key into authorized_Key file for all hosts:
+
+
+
+
+
+

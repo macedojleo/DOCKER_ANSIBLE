@@ -4,14 +4,21 @@ services:
                 build: loadbalancer
                 hostname: load01
                 container_name: load01
+                volumes:
+                        - ./loadbalancer/ssh:/root/.ssh
         app01:
                 build: webserver
                 hostname: app01
                 container_name: app01
+                volumes:
+                        - ./webserver/ssh:/root/.ssh
+
         db01:
                 build: db
                 hostname: mysql01
                 container_name: mysql01
+                volumes:
+                        - ./db/ssh:/root/.ssh
                 environment:
                                 MYSQL_ROOT_PASSWORD: 123456
                                 MYSQL_DATABASE: auth
@@ -21,6 +28,15 @@ services:
                 build: control
                 hostname: ansible
                 container_name: ansible
+                links:
+                        - app01
+                        - load01
+                        - db01
                 volumes:
                         - ./control/inventory:/etc/ansible
+                        - ./control/ssh:/root/.ssh
+                        - ./db/ssh:/root/shared/db/
+                        - ./webserver/ssh:/root/shared/webserver/
+                        - ./loadbalancer/ssh:/root/shared/loadbalancer/
+
 
